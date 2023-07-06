@@ -46,10 +46,9 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [
-            os.path.join(BASE_DIR, 'templates'),
-            os.path.join(BASE_DIR, 'templates/oc_lettings_site'),
-            os.path.join(BASE_DIR, 'templates/lettings'),
-            os.path.join(BASE_DIR, 'templates/profiles'),
+            os.path.join(BASE_DIR, 'oc_lettings_site/templates/oc_lettings_site'),
+            os.path.join(BASE_DIR, 'lettings/templates/lettings'),
+            os.path.join(BASE_DIR, 'profiles/templates/profiles'),
         ],
         'APP_DIRS': True,
         'OPTIONS': {
