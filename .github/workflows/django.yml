@@ -37,7 +37,7 @@ jobs:
         pip install -r requirements.txt
     - name: Activate virtualenv
       run: |
-        . .venv/bin/activate
+        . .venv/Scripts/activate
         echo PATH=$PATH >> $GITHUB_ENV
     - name: Linters
       run: pre-commit
