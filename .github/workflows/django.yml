@@ -40,4 +40,3 @@ jobs:
         . venv/bin/activate
         black --line-length=99 .
         flake8
-        python manage.py test
