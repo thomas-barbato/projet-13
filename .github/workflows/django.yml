@@ -29,6 +29,8 @@ jobs:
         echo 'Bonjour, projet en mode DEV'
         python -m venv venv
         pip install -r requirements.txt
+        black --line-length=99 .
+        flake8
     - name: Activate venv and install dep (prod mod)
       if: ${{ env.DEBUG == 0 }}
       run: |
