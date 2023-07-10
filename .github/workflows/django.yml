@@ -32,12 +32,13 @@ jobs:
     - name: Activate venv and install dep (prod mod)
       if: ${{ env.DEBUG == 0 }}
       run: |
-        echo 'Bonjour, projet en mode PRODUCTION'
-        python -m venv venv
+        python -m pip install --upgrade pip
         pip install -r requirements.txt
-    - name: Activate virtualenv
+        black --line-length=99 .
+        flake8
+    - name: Run Tests
       run: |
-        . venv/Scripts/activate
-        echo PATH=$PATH >> $GITHUB_ENV
+        python manage.py test
+
     - name: Linters
       run: pre-commit
