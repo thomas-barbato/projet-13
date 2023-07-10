@@ -35,12 +35,9 @@ jobs:
         echo 'Bonjour, projet en mode PRODUCTION'
         python -m venv venv
         pip install -r requirements.txt
-    - name: Run Tests
+    - name: Activate virtualenv
       run: |
-        python -m venv venv
-        . venv/bin/activate
-        echo "venv running..."
-        black --line-length=99 .
-        echo "black running..."
-        python manage.py test
-        echo "python test running..."
+        . .venv/bin/activate
+        echo PATH=$PATH >> $GITHUB_ENV
+    - name: Linters
+      run: pre-commit
