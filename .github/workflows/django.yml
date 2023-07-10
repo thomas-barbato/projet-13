@@ -23,18 +23,15 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - run:
-      name: Activate venv and install dep
-      command: |
-        echo 'Bonjour, projet en mode prod'
+    - name: Activate venv and install dep
+      run: |
         python -m venv venv
         . venv/bin/activate
         pip install -r requirements.txt
-    - run:
+    - name: Run tests
       if: ${{ env.DEBUG == 1 }}
-      name: Run tests
-      command: |
-        echo 'Bonjour, projet en mode prod'
+      run: |
+        echo 'Bonjour, projet en mode dev'
         black --line-length=99 .
         flake8
         python manage.py test
@@ -52,18 +49,15 @@ jobs:
       uses: actions/setup-python@v3
       with:
         python-version: ${{ matrix.python-version }}
-    - run:
-      name: Activate venv and install dep
-      command: |
-        echo 'Bonjour, projet en mode prod'
+    - name: Activate venv and install dep
+      run: |
         python -m venv venv
         . venv/bin/activate
         pip install -r requirements.txt
-    - run:
+    - name: Run tests
       if: ${{ env.DEBUG == 0 }}
-      name: Run tests
-      command: |
-        echo 'Bonjour, projet en mode prod'
+      run: |
+        echo 'Bonjour, test projet en mode production'
         black --line-length=99 .
         flake8
         python manage.py test
