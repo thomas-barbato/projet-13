@@ -28,11 +28,13 @@ jobs:
       run: |
         echo 'Bonjour, projet en mode DEV'
         pip install -r requirements.txt
-        echo 'pip running'
+        echo 'pip running...'
         black --line-length=99 .
-        echo 'black running'
+        echo 'black running...'
         flake8
-        echo 'flake8 running'
+        echo 'flake8 running...'
+        python manage.py test
+        echo 'tests running...'
     - name: install dep (prod mod)
       if: ${{ env.DEBUG == 0 }}
       run: |
