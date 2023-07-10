@@ -10,8 +10,8 @@ env:
   debug: 1
 
 jobs:
-  build:
-
+  debug-deploy:
+    if: ${{ env.debug == 1 }}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -25,8 +25,33 @@ jobs:
       with:
         python-version: ${{ matrix.python-version }}
     - name: Install Dependencies
-      if: ${{ env.debug == 1 }}
       run: |
+        echo 'Bonjour, en mode debug'
+        python -m pip install --upgrade pip
+        pip install -r requirements.txt
+        black --line-length=99 .
+        flake8
+    - name: Run Tests
+      run: |
+        python manage.py test
+
+  production-deploy:
+    if: ${{ env.debug == 0 }}
+    runs-on: ubuntu-latest
+    strategy:
+      max-parallel: 4
+      matrix:
+        python-version: [3.11]
+
+    steps:
+    - uses: actions/checkout@v3
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install Dependencies
+      run: |
+        echo 'Bonjour, en mode prod'
         python -m pip install --upgrade pip
         pip install -r requirements.txt
         black --line-length=99 .
