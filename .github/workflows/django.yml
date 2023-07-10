@@ -7,11 +7,11 @@ on:
     branches: [ "master" ]
 
 env:
-  debug: 1
+  DEBUG: 1
 
 jobs:
   debug-deploy:
-    if: ${{ env.debug == 1 }}
+    if: ${{ DEBUG == 1 }}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
@@ -36,7 +36,7 @@ jobs:
         python manage.py test
 
   production-deploy:
-    if: ${{ env.debug == 0 }}
+    if: ${{ DEBUG == 0 }}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
