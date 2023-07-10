@@ -38,5 +38,8 @@ jobs:
     - name: Run Tests
       run: |
         . venv/bin/activate
+        echo "venv running..."
         black --line-length=99 .
+        "echo black running..."
         flake8
+        "flake8 running..."
