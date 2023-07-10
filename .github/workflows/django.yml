@@ -37,6 +37,7 @@ jobs:
         pip install -r requirements.txt
     - name: Run Tests
       run: |
+        python -m venv venv
         . venv/bin/activate
         echo "venv running..."
         black --line-length=99 .
