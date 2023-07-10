@@ -11,7 +11,7 @@ env:
 
 jobs:
   deploy:
-    runs-on: ubuntu-latest
+    runs-on: windows-latest
     strategy:
       max-parallel: 4
       matrix:
@@ -37,7 +37,6 @@ jobs:
         pip install -r requirements.txt
     - name: Activate virtualenv
       run: |
-        python -m venv venv
         . .venv/Scripts/activate
         echo PATH=$PATH >> $GITHUB_ENV
     - name: Linters
