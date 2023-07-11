@@ -42,21 +42,18 @@ jobs:
         pip install -r requirements.txt
         black --line-length=99 .
         flake8
-    - run:
-      name: Black
-      command: |
+    - name: Black
+      run: |
         . venv/scripts/activate
         echo 'black running...'
         black --line-length=99 .
-    - run:
-      name: Linting
-      command: |
+    - name: Linting
+      run: |
         . venv/scripts/activate
         echo 'flake8 running...'
         flake8
-    - run:
-      name: Tests
-      command: |
+    - name: Tests
+      run: |
         . venv/scripts/activate
         echo 'tests running...'
         python manage.py test
