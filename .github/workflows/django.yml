@@ -10,7 +10,7 @@ env:
   DEBUG: 1
 
 jobs:
-  deploy:
+  build:
     runs-on: windows-latest
     strategy:
       max-parallel: 4
