@@ -18,25 +18,17 @@ FROM python:latest
 
 COPY requirements.txt .
 
+COPY requirements-dev.txt .
+
 ENV SQLITE_URL=sqlite:///db/oc-lettings-site.sqlite3
 
 RUN pip install -r requirements.txt
+
+RUN pip install -r requirements-dev.txt
 
 COPY . /projet-13/
 
 WORKDIR /projet-13/
 
 EXPOSE 8000
-# 127.0.0.1 (or other ip addresses) doesn't work.
 CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-
-# Download dependencies as a separate step to take advantage of Docker's caching.
-# Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
-# Leverage a bind mount to requirements.txt to avoid having to copy them into
-# into this layer.
-#RUN --mount=type=cache,target=/root/.cache/pip \
-#    --mount=type=bind,source=requirements.txt,target=requirements.txt
-
-
-# Run the application.
-#CMD [ "python", "manage.py", "runserver", "127.0.0.1:8000", "--settings=settings" ]
