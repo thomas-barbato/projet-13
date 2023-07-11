@@ -1,1 +1,2 @@
 pre-commit==3.3.3
+pre-commit-hooks==4.4.0

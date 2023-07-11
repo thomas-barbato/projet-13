@@ -10,7 +10,17 @@ env:
   DEBUG: 1
 
 jobs:
-  deploy:
+
+  pre-commit:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v3
+      - uses: pre-commit/action@v3.0.0
+        with:
+          extra_args: flake8 --all-files
+
+  build:
     runs-on: windows-latest
     strategy:
       max-parallel: 4
