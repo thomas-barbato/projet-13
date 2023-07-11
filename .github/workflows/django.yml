@@ -43,20 +43,20 @@ jobs:
         black --line-length=99 .
         flake8
     - run:
-        name: Black Run
-        command: |
-          . venv/scripts/activate
-          echo 'black running...'
-          black --line-length=99 .
+      name: Black
+      command: |
+        . venv/scripts/activate
+        echo 'black running...'
+        black --line-length=99 .
     - run:
-        name: Linting
-        command: |
-          . venv/scripts/activate
-          echo 'flake8 running...'
-          flake8
+      name: Linting
+      command: |
+        . venv/scripts/activate
+        echo 'flake8 running...'
+        flake8
     - run:
-        name: run Tests
-        command: |
-          . venv/scripts/activate
-          echo 'tests running...'
-          python manage.py test
+      name: Tests
+      command: |
+        . venv/scripts/activate
+        echo 'tests running...'
+        python manage.py test
