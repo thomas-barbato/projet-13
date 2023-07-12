@@ -29,8 +29,8 @@ repos:
       rev: 23.7.0
       hooks:
         - id: black
+          args: ['--config=setup.cfg', '--ignore=E129,E2']
     - repo: https://github.com/pycqa/flake8
       rev: 3.7.0
       hooks:
         - id: flake8
-          args: [.\lettings\ .\oc_lettings_site\ .\profiles\]
