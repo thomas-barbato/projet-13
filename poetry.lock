@@ -98,5 +98,5 @@ testing = ["coverage (>=5.0)", "pytest", "pytest-cover"]
 
 [metadata]
 lock-version = "2.0"
-python-versions = "^3.11"
+python-versions = "^3.7.10"
 content-hash = "8a61760265563e678280f774ed0551e6f4262b7326ba6136eb86da10a6bd04ba"
