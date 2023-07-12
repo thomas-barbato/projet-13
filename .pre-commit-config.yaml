@@ -34,3 +34,4 @@ repos:
       rev: 3.7.0
       hooks:
         - id: flake8
+          args: [.\lettings\ .\oc_lettings_site\ .\profiles\]

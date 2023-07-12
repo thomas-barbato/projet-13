@@ -1,0 +1,20 @@
+databases:
+  - name: oc-lettings-site
+    databaseName: oc-lettings-site
+    user: oc-lettings-site
+
+services:
+  - type: web
+    name: oc-lettings-site
+    runtime: python
+    buildCommand: "./build.sh"
+    startCommand: "waitress-serve --listen=*:8000 wsgi:application"
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: oc-lettings-site
+          property: connectionString
+      - key: SECRET_KEY
+        generateValue: true
+      - key: WEB_CONCURRENCY
+        value: 4

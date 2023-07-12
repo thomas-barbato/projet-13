@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "projet-13"
+version = "0.1.0"
+description = ""
+authors = ["Case Gibson <t.barbato78@gmail.com>"]
+readme = "README.md"
+packages = [{include = "projet_13"}]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+django = "^4.2.3"
+waitress = "^2.1.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
