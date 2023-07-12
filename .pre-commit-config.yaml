@@ -29,7 +29,7 @@ repos:
       rev: 23.7.0
       hooks:
         - id: black
-          args: ['--config=setup.cfg', '--ignore=E129,E2']
+          args: ['--config=setup.cfg']
     - repo: https://github.com/pycqa/flake8
       rev: 3.7.0
       hooks:
