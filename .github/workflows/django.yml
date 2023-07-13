@@ -80,4 +80,5 @@ jobs:
           tags: projet-13-server:latest
       - name: Inspect
         run: |
+          echo "build docker image now..."
           docker image inspect projet-13-server:latest
