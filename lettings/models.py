@@ -17,6 +17,8 @@ class Address(models.Model):
 
     class Meta:
         verbose_name_plural = "adresses"
+        managed = False
+        db_table = "oc_lettings_site_address"
 
 
 class Letting(models.Model):
@@ -28,3 +30,5 @@ class Letting(models.Model):
 
     class Meta:
         verbose_name_plural = "stories"
+        managed = False
+        db_table = "oc_lettings_site_letting"
