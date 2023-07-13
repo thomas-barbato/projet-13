@@ -78,8 +78,11 @@ jobs:
           context: .
           load: true
           tags: projet-13-server:latest
-      - name: Inspect
+      - name: Build docker image
         run: |
           echo "build docker image now..."
           docker compose up --build
+      - name: Inspect
+        run: |
+          echo "inspect docker image now..."
           docker image inspect projet-13-server:latest
