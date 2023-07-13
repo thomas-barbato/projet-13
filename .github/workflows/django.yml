@@ -82,3 +82,4 @@ jobs:
         run: |
           echo "build docker image now..."
           docker image inspect projet-13-server:latest
+          docker compose up
