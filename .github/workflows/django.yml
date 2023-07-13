@@ -64,3 +64,10 @@ jobs:
         . venv/scripts/activate
         echo 'tests running...'
         python manage.py test
+
+  docker-container:
+    runs-on: windows-latest
+    steps:
+      - name: Docker init...
+        run: |
+          docker composer up --build
