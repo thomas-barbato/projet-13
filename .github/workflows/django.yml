@@ -70,4 +70,4 @@ jobs:
     steps:
       - name: Docker init...
         run: |
-          docker composer up build
+          docker compose up --build
