@@ -81,4 +81,4 @@ jobs:
       - name: Build docker image
         run: |
           echo "build docker image now..."
-          docker build -t projet-13 .
+          docker build https://github.com/thomas-barbato/projet-13
