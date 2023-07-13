@@ -81,5 +81,5 @@ jobs:
       - name: Inspect
         run: |
           echo "build docker image now..."
+          docker compose up --build
           docker image inspect projet-13-server:latest
-          docker compose up
