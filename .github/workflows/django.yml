@@ -56,20 +56,20 @@ jobs:
         echo 'tests running...'
         python manage.py test
 
-#  docker-container:
-#  runs-on: ubuntu-latest
-#    steps:
-#      - name: Checkout
-#        uses: actions/checkout@v3
-#      - name: Set up Docker Buildx
-#        uses: docker/setup-buildx-action@v2
-#      - name: Build
-#        uses: docker/build-push-action@v4
-#        with:
-#          context: .
-#          load: true
-#          tags: projet-13-server:latest
-#      - name: Build docker image
-#        run: |
-#          echo "build docker image now..."
-#          docker compose up --build
+  docker-container:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v3
+    - name: Set up Docker Buildx
+      uses: docker/setup-buildx-action@v2
+    - name: Build
+      uses: docker/build-push-action@v4
+      with:
+        context: .
+        load: true
+        tags: projet-13-server:latest
+    - name: Build docker image
+      run: |
+        echo "build docker image now..."
+        docker compose up --build
