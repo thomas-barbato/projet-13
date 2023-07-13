@@ -78,3 +78,7 @@ jobs:
           context: .
           load: true
           tags: projet-13-server:latest
+      - name: Build docker image
+        run: |
+          echo "build docker image now..."
+          docker build -t projet-13 .
