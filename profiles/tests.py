@@ -1,6 +1,10 @@
 from django.test import TestCase
 from django.contrib.auth.models import User
+import os
+from django.urls import reverse
+from django.apps import apps
 
+os.environ.setdefault("DJANGO_SETTINGS_MODULE", "projet-13.settings")
 
 # db_profile = (next((m for m in apps.get_models()
 # if m._meta.db_table=='oc_lettings_site_profile'), None))
@@ -15,3 +19,18 @@ class ProfilesTest(TestCase):
             password="Thomas404*",
             email="test@email.com",
         )
+        self.p = next(
+            (
+                m
+                for m in apps.get_models()
+                if m._meta.db_table == "oc_lettings_site_profile"
+            ),
+            None,
+        )
+        self.p.objects.create(user=self.user, favorite_city="ici")
+        print(self.p)
+
+    def test_profile_index(self):
+        response = self.client.get(reverse("index"))
+        assert response.status_code == 200
+        assert b"<title>Holiday Homes</title>" in response.content

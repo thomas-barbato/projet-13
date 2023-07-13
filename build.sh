@@ -2,5 +2,5 @@
 # exit on error
 set -o errexit
 
-poetry install --no-root
+pip install -r requirements.txt
 python manage.py migrate
