@@ -78,6 +78,6 @@ jobs:
           DOCKER_TOKEN: ${{secrets.DOCKER_TOKEN }}
         # --password-stdin is used because --password via the CLI is insecure.
         run: |
-          echo ${{env.DOCKER_TOKEN}} | docker login --username $DOCKER_LOGIN --password-stdin
+          echo ${{env.DOCKER_TOKEN}} | docker login --u $DOCKER_LOGIN --password-stdin
           docker build . --file Dockerfile --tag oc-p13:latest
           docker push ${{env.DOCKER_USER}}/oc-pr13:oc-p13
