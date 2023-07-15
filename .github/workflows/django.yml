@@ -74,6 +74,6 @@ jobs:
       - name: Build the Docker image
         # --password-stdin is used because --password via the CLI is insecure.
         run: |
-          echo "$DOCKER_PASSWORD" | docker login --username $DOCKER_LOGIN --password-stdin
+          docker login --username $DOCKER_LOGIN --password $DOCKER_PASSWORD
           docker build . --file Dockerfile --tag oc-p13:latest
           docker push casegibson/oc-pr13:oc-p13
