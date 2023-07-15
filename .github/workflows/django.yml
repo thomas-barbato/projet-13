@@ -76,6 +76,8 @@ jobs:
           DOCKER_USER: ${{ secrets.DOCKER_LOGIN }}
           DOCKER_PASSWORD: ${{secrets.DOCKER_PASSWORD }}
           DOCKER_TOKEN: ${{ secrets.DOCKER_TOKEN }}
+      - run:
+        name: Docker login
         # --password-stdin is used because --password via the CLI is insecure.
         command: |
           echo ${{ env.DOCKER_TOKEN }} | docker login -u $DOCKER_LOGIN --password-stdin
