@@ -82,11 +82,13 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
+          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
       - name: Pull to docker desktop
         run: |
-          docker pull --expose 8089 --hostname p13 ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
+          docker create ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}} --expose 8089
+          docker pull ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
     runs-on: windows-latest
