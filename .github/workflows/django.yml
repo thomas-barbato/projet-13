@@ -79,11 +79,10 @@ jobs:
         with:
             images: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPOS_NAME }}
       - name: Build and push
-        uses: docker/build-push-action@v4
-        with:
-          context: .
-          push: true
-          tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
+        run: |
+          docker build -t ${{ env.REPOS_NAME }} .
+          docker tag ${{ env.REPOS_NAME }} ${{ secrets.DOCKER_USERNAME }}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG }}
+          docker push $DOCKER_LOGIN/$DOCKER_REPO:${{ env.IMG_TAG }}
 
   deploy-to-render:
     runs-on: windows-latest
