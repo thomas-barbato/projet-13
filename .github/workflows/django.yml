@@ -90,7 +90,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
           labels: ${{ steps.meta.outputs.labels }}
       - name: Pull to docker desktop
-        command: |
+        run: |
           docker pull ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
