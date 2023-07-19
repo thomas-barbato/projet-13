@@ -1,7 +1,8 @@
 import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
-BASE_DIR = os.getcwd()
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+OCL_DIR = BASE_DIR + "/oc_lettings_site"
 
 
 # Quick-start development settings - unsuitable for production
@@ -52,9 +53,9 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "DIRS": [
-            os.path.join(BASE_DIR, "oc_lettings_site/templates/oc_lettings_site"),
-            os.path.join(BASE_DIR, "lettings/templates/lettings"),
-            os.path.join(BASE_DIR, "profiles/templates/profiles"),
+            os.path.join(OCL_DIR, "templates/oc_lettings_site"),
+            os.path.join(OCL_DIR, "../lettings/templates/lettings"),
+            os.path.join(OCL_DIR, "../profiles/templates/profiles"),
         ],
         "APP_DIRS": True,
         "OPTIONS": {
@@ -77,7 +78,7 @@ WSGI_APPLICATION = "wsgi.application"
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.sqlite3",
-        "NAME": os.path.join(BASE_DIR, "oc-lettings-site.sqlite3"),
+        "NAME": os.path.join(OCL_DIR, "oc-lettings-site.sqlite3"),
     }
 }
 

@@ -60,9 +60,6 @@ jobs:
 
   build-and-push-to-docker:
     runs-on: ubuntu-latest
-    permissions:
-      contents: read
-      packages: write
     steps:
       - name: Check out the repo
         uses: actions/checkout@v3
@@ -85,13 +82,8 @@ jobs:
         uses: docker/build-push-action@v4
         with:
           context: .
-          file: ./Dockerfile
           push: true
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
-          labels: ${{ steps.meta.outputs.labels }}
-      - name: Pull to docker desktop
-        run: |
-          docker pull ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
     runs-on: windows-latest
