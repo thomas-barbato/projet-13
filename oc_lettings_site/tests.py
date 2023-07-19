@@ -1,7 +1,8 @@
+from django.test import TestCase
 from django.urls import reverse
-from django.test import Client
 
 
-def test_index_is_reachable():
-    response = Client.get(reverse("index"))
-    assert response.status_code == 200
+class OclettingsSiteTests(TestCase):
+    def test_index(self):
+        response = self.client.get(reverse("index"))
+        assert response.status_code == 200
