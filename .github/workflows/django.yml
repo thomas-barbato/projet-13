@@ -56,15 +56,6 @@ jobs:
         echo 'tests running...'
         python manage.py test
 
-  deploy-to-render:
-    runs-on: windows-latest
-    steps:
-    - name: Deploy to render
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
-        api-key: ${{ secrets.MY_RENDER_API_KEY }}
-
   create-docker-image:
     runs-on: ubuntu-latest
     steps:
@@ -85,3 +76,16 @@ jobs:
           context: .
           push: true
           tags: ${{ secrets.DOCKER_USERNAME}}/oc-p13:latest
+      - name: Create docker image
+        uses: actions/checkout@v2
+        run: |
+          docker build . --file Dockerfile --tag oc-p13:latest
+
+  deploy-to-render:
+    runs-on: windows-latest
+    steps:
+    - name: Deploy to render
+      uses: johnbeynon/render-deploy-action@v0.0.8
+      with:
+        service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
+        api-key: ${{ secrets.MY_RENDER_API_KEY }}
