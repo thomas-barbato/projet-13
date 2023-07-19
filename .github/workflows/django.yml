@@ -8,6 +8,8 @@ on:
 
 env:
   DEBUG: 1
+  REPOS_NAME: oc-p13
+  IMG_TAG: latest
 
 jobs:
 
@@ -78,15 +80,18 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4
         with:
-            images: ${{ secrets.DOCKER_USERNAME }}/oc-p13
+            images: ${{ secrets.DOCKER_USERNAME }}/${{ env.REPOS_NAME }}
       - name: Build and push
         uses: docker/build-push-action@v4
         with:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME}}/oc-p13:latest
+          tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
           labels: ${{ steps.meta.outputs.labels }}
+      - name: Pull to docker desktop
+        command: |
+          docker pull ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
     runs-on: windows-latest
