@@ -61,7 +61,7 @@ jobs:
       run: |
         . venv/scripts/activate
         echo 'pytest running...'
-        pytest --disable-warnings
+        python manage.py test
 
   build-and-push-to-docker:
     runs-on: ubuntu-latest
