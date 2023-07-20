@@ -60,8 +60,8 @@ jobs:
     - name: Other tests
       run: |
         . venv/scripts/activate
-        echo 'tests running...'
-        python manage.py test
+        echo 'pytest running...'
+        pytest --disable-warnings
 
   build-and-push-to-docker:
     runs-on: ubuntu-latest
