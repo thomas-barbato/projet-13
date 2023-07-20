@@ -17,12 +17,12 @@ class ProfilesTest(TestCase):
             title="Simpson's letting", address=self.address
         )
 
-    def test_profile_index_reachable(self):
+    def test_lettings_index_reachable(self):
         response = self.client.get(reverse("lettings_index"))
         assert response.status_code == 200
         assert b"<title>Lettings</title>" in response.content
 
-    def test_profile_exists(self):
+    def test_letting_exists(self):
         response = self.client.get(reverse("letting", args=[self.letting.id]))
         assert response.status_code == 200
         assert b"<p>Springfield, Illinois 62701</p>" in response.content
