@@ -4,4 +4,3 @@ pytest-django==3.9.0
 black==23.3.0
 waitress==2.1.2
 sentry-sdk==1.28.1
-django_environ-0.10.
