@@ -103,6 +103,7 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+
 # Sentry configuration
 sentry_sdk.init(
     dsn=(
