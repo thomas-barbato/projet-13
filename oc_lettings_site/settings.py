@@ -1,6 +1,8 @@
 import os
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from sentry_sdk.integrations.wsgi import SentryWsgiMiddleware
+import wsgi
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -127,6 +129,7 @@ sentry_sdk.init(
     send_default_pii=True,
 )
 
+wsgi_app = SentryWsgiMiddleware(wsgi)
 
 # Internationalization
 # https://docs.djangoproject.com/en/3.0/topics/i18n/
