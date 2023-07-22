@@ -1,4 +1,6 @@
 import os
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -100,6 +102,29 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
+
+# Sentry configuration
+sentry_sdk.init(
+    dsn=(
+        "https://243e2108953d4e61a9948cd026257615@o4505574491815936"
+        ".ingest.sentry.io/4505574494896128"
+    ),
+    integrations=[
+        DjangoIntegration(
+            transaction_style="url",
+            middleware_spans=True,
+            signals_spans=False,
+            cache_spans=False,
+        )
+    ],
+    # Set traces_sample_rate to 1.0 to capture 100%
+    # of transactions for performance monitoring.
+    # We recommend adjusting this value in production.
+    traces_sample_rate=1.0,
+    # If you wish to associate users to errors (assuming you are using
+    # django.contrib.auth) you may enable sending PII data.
+    send_default_pii=True,
+)
 
 
 # Internationalization
