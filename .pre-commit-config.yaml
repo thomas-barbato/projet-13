@@ -30,7 +30,6 @@ repos:
       hooks:
         - id: black
           language_version: python3.11
-          arg: [--config=./setup.cfg]
     - repo: https://github.com/pycqa/flake8
       rev: 3.7.0
       hooks:
