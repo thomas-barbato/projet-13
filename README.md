@@ -19,7 +19,29 @@
 <img src="https://img.shields.io/badge/Sentry-v1.28.1-2CA5E0?style=flat&logo=sentry&logoColor=white" alt="sentry-badge">  </a>
 </p>
 
-## Objectifs du projet 13
+## Index
+
+1. [Objectifs du projet 13](#objectifs)
+2. [Développement local](#devlocal)
+   1. [Prérequis](#devlocal-prereq)
+   2. [Linting](#devlocal-linting)
+   3. [Tests unitaires](#devlocal-pytest)
+   4. [Base de données](#devlocal-bdd)
+   5. [Administration](#devlocal-admin)
+3. [Docker](#docker)
+   1. [Docker local](#docker-local)
+   2. [Docker pull](#docker-pull)
+4. [Pre-commit](#pre-commit)
+   1. [Prérequis](#pre-commit-prereq)
+   2. [Description](#pre-commit-description)
+   3. [Utilisation manuelle](#pre-commit-manuelle)
+5. [Déploiement](#deploiement)
+   1. [Prérequis](#deploiement-prereq)
+   2. [Description](#deploiement-description)
+   3. [Configuration](#deploiement-configuration)
+
+
+## Objectifs du projet 13 <a name="objectifs"></a>
 
 1. Réduire la dette technique pour le site web d'Orange County Lettings
 - Corriger les erreurs de linting
@@ -39,9 +61,9 @@
 4. Surveillance avec sentry
 
 
-## Développement local
+## Développement local <a name="devlocal"></a>
 
-### Prérequis
+### Prérequis <a name="devlocal-prereq"></a>
 
 Installez la dernière version de python , **disponible** [**ici**](https://www.python.org/downloads/)
 
@@ -60,17 +82,17 @@ Activez l'environnement virtuel:
 Installez les dépendances:
 `pip install -r requirements.txt`
 
-#### Linting
+#### Linting <a name="devlocal-linting"></a>
 
 - `cd /path/to/projet-13`
 - `flake8`
 
-#### Tests unitaires
+#### Tests unitaires <a name="devlocal-pytest"></a>
 
 - `cd /path/to/projet-13`
 - `pytest`
 
-#### Base de données
+#### Base de données <a name="devlocal-bdd"></a>
 
 - `cd /projet-13/oc_lettings_site/`
 - Ouvrir une session shell:`sqlite3`
@@ -81,14 +103,14 @@ Installez les dépendances:
   oc_lettings_site_profile where favorite_city like 'B%';`;
 - `.quit` pour quitter
 
-#### Panel d'administration
+#### Panel d'administration <a name="devlocal-admin"></a>
 
 - Aller sur `http://localhost:8000/admin`
 - Connectez-vous avec l'utilisateur `admin`, mot de passe `Abc1234!`
 
-#### Docker
+#### Docker <a name="docker"></a>
 
-##### Pour créer une image docker et la lancer localement
+##### Pour créer une image docker et la lancer localement <a name="docker-local"></a>
 
 - Téléchargez et installez docker desktop, disponible ici :
   1. **windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
@@ -101,7 +123,7 @@ Installez les dépendances:
 ***attention, nomImage doit être le meme que lors du build.***
 - Pour y accéder: http://localhost:8000
 
-##### Pour créer une image docker et la lancer localement, depuis dockerhub
+##### Pour créer une image docker et la lancer localement, depuis dockerhub  <a name="docker-pull"></a>
 
 - Téléchargez et installez docker desktop, disponible ici :
   1. **windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
@@ -112,20 +134,20 @@ Installez les dépendances:
 - Pour activer l'image: `docker run --rm -p 8000:8000 --name nomContainer casegibson/oc-p13`
 - Pour y accéder: http://localhost:8000
 
-## Pre-commit
+## Pre-commit <a name="pre-commit"></a>
 
-### Prérequis
+### Prérequis <a name="pre-commit-prereq"></a>
 
 Pour activer le pre-commit, vous aurez besoin d'installer les bibliothèques qui y sont liées.
 
 Entrez: `pip install -r requirements-dev.txt`
 
-### Description
+### Description <a name="pre-commit-description"></a>
 
 Le pre-commit est une série de tests qui surviennent quand on lance un commit, il permet de vérifier
 *(selon la configuration choisie)* si ce que vous voulez soumettre est conforme à ce qui est attendu.
 
-### Utilisation manuelle et configuration
+### Utilisation manuelle et configuration <a name="pre-commit-manuelle"></a>
 
 Dans le cas où voudriez vous-même tester le bon fonctionnement du pre-commit:
 
@@ -134,9 +156,9 @@ Entrez: `pre-commit --all-files`
 Dans le cas où vous voudriez modifier sa configuration,\
 modifiez le fichier [.pre-commit-config.yaml](https://github.com/thomas-barbato/projet-13/blob/master/.pre-commit-config.yaml)
 
-## Déploiement
+## Déploiement <a name="deploiement"></a>
 
-### Prérequis
+### Prérequis <a name="deploiement-prereq"></a>
 
 Pour effectuer le déploiement de l'application, vous aurez besoin de plusieurs comptes :
 
@@ -145,7 +167,7 @@ Pour effectuer le déploiement de l'application, vous aurez besoin de plusieurs 
 - [**Docker**](https://hub.docker.com/)
 - [**Sentry**](https://sentry.io/)
 
-### Description
+### Description <a name="deploiement-description"></a>
 
 Le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
 Lorsque l'ont push vers la branche **master**.
@@ -157,9 +179,7 @@ C'est ici que vous pourrez y configurer votre pipeline CI/CD.
 - Une image docker est créée
 - déploiement vers Render
 
-## Configuration du déploiement
-
-### Créer un web service Render
+## Configuration du déploiement <a name="deploiement-configuration"></a>
 
 Pour faire fonctionner le pipeline CI/CD, vous devrez créer un **web service** sur le site [**Render**](https://render.com/),
 il vous permettra d'héberger votre site web.
