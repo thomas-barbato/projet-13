@@ -32,12 +32,12 @@
    1. [Docker local](#docker-local)
    2. [Docker pull](#docker-pull)
 4. [Pre-commit](#pre-commit)
-   1. [Prérequis](#pre-commit-prereq)
-   2. [Description](#pre-commit-description)
+   1. [Description](#pre-commit-description)
+   2. [Prérequis](#pre-commit-prereq)
    3. [Utilisation manuelle](#pre-commit-manuelle)
 5. [Déploiement](#deploiement)
-   1. [Prérequis](#deploiement-prereq)
-   2. [Description](#deploiement-description)
+   1. [Description](#deploiement-description)
+   2. [Prérequis](#deploiement-prereq)
    3. [Configuration](#deploiement-configuration)
 
 
@@ -136,16 +136,16 @@ Installez les dépendances:
 
 ## Pre-commit <a name="pre-commit"></a>
 
+### Description <a name="pre-commit-description"></a>
+
+Le pre-commit est une série de tests qui surviennent quand on lance un commit, il permet de vérifier
+*(selon la configuration choisie)* si ce que vous voulez soumettre est conforme à ce qui est attendu.
+
 ### Prérequis <a name="pre-commit-prereq"></a>
 
 Pour activer le pre-commit, vous aurez besoin d'installer les bibliothèques qui y sont liées.
 
 Entrez: `pip install -r requirements-dev.txt`
-
-### Description <a name="pre-commit-description"></a>
-
-Le pre-commit est une série de tests qui surviennent quand on lance un commit, il permet de vérifier
-*(selon la configuration choisie)* si ce que vous voulez soumettre est conforme à ce qui est attendu.
 
 ### Utilisation manuelle et configuration <a name="pre-commit-manuelle"></a>
 
@@ -158,6 +158,12 @@ modifiez le fichier [.pre-commit-config.yaml](https://github.com/thomas-barbato/
 
 ## Déploiement <a name="deploiement"></a>
 
+### Description <a name="deploiement-description"></a>
+
+Le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
+Lorsque l'ont push vers la branche **master**.
+Le fichier [**django.yml**](https://github.com/thomas-barbato/projet-13/blob/master/.github/workflows/django.yml) vous permet de modifier la configuration du deploiement.
+
 ### Prérequis <a name="deploiement-prereq"></a>
 
 Pour effectuer le déploiement de l'application, vous aurez besoin de plusieurs comptes :
@@ -166,14 +172,6 @@ Pour effectuer le déploiement de l'application, vous aurez besoin de plusieurs 
 - [**Render**](https://render.com/)
 - [**Docker**](https://hub.docker.com/)
 - [**Sentry**](https://sentry.io/)
-
-### Description <a name="deploiement-description"></a>
-
-Le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
-Lorsque l'ont push vers la branche **master**.
-
-Une fois que vous aurez activé Github action - Django, le fichier [**django.yml**](https://github.com/thomas-barbato/projet-13/blob/master/.github/workflows/django.yml) sera ajouté à votre projet.
-C'est ici que vous pourrez y configurer votre pipeline CI/CD.
 
 **Si les tests sont approuvés** :
 - Une image docker est créée
