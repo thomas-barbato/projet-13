@@ -1,5 +1,5 @@
 # projet-13 version pre 17/07/2023
-# Mettez à l'échelle une application Django en utilisant une architecture modulaire
+## Mettez à l'échelle une application Django en utilisant une architecture modulaire
 
 
 <p align="center">
@@ -13,7 +13,7 @@
     <img src="https://img.shields.io/badge/Docker-v24.0.2-2CA5E0?style=flat&logo=docker&logoColor=white" alt="docker-badge">
   </a>
   <a href="https://dashboard.render.com/web/srv-cio5g45ph6ei90e0h65g/">
-    <img src="https://img.shields.io/badge/Render-oc--pr--13-ff0000?style=flat&logo=render&logoColor=white" alt="heroku-badge">
+    <img src="https://img.shields.io/badge/Render-oc--pr--13-ff0000?style=flat&logo=render&logoColor=white" alt="render-badge">
   </a>
   <a href="https://none-0cu.sentry.io/issues/">
 <img src="https://img.shields.io/badge/Sentry-v1.28.1-2CA5E0?style=flat&logo=sentry&logoColor=white" alt="sentry-badge">  </a>
@@ -44,19 +44,19 @@
 ## Objectifs du projet 13 <a name="objectifs"></a>
 
 1. Réduire la dette technique pour le site web d'Orange County Lettings
-- Corriger les erreurs de linting
-- Corriger la pluralisation des noms de models
+   - Corriger les erreurs de linting
+   - Corriger la pluralisation des noms de models
 
 2. Refonte de l'architecture modulaire du site
-- Division du site en 3 applications (profiles, lettings et oc_lettings_site)
-- Transformer oc_lettings_site en projet django
-- Créer divers tests
+   - Division du site en 3 applications (profiles, lettings et oc_lettings_site)
+   - Transformer oc_lettings_site en projet django
+   - Créer divers tests
 
 3. Ajout d'un pipeline CI/CD
-- Instaurer des tests (linting, black) en pre-commit
-- Executer à nouveau les tests pendant un push
-- construire et push une image du site avec Docker (sur dockerhub)
-- Déployer le site avec Render
+   - Instaurer des tests (linting, black) en pre-commit
+   - Executer à nouveau les tests pendant un push
+   - construire et push une image du site avec Docker (sur dockerhub)
+   - Déployer le site avec Render
 
 4. Surveillance avec sentry
 
@@ -113,8 +113,8 @@ Installez les dépendances:
 ##### Pour créer une image docker et la lancer localement <a name="docker-local"></a>
 
 - Téléchargez et installez docker desktop, disponible ici :
-  1. **windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
-  2. **linux**: [**ici**](https://docs.docker.com/desktop/linux/install/)
+  1. **Windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
+  2. **Linux**: [**ici**](https://docs.docker.com/desktop/linux/install/)
 
 
 - Lancez Docker desktop
@@ -126,8 +126,8 @@ Installez les dépendances:
 ##### Pour créer une image docker et la lancer localement, depuis dockerhub  <a name="docker-pull"></a>
 
 - Téléchargez et installez docker desktop, disponible ici :
-  1. **windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
-  2. **linux**: [**ici**](https://docs.docker.com/desktop/linux/install/)
+  1. **Windows**: [**ici**](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe?utm_source=docker&utm_medium=webreferral&utm_campaign=dd-smartbutton&utm_location=module)
+  2. **Linux**: [**ici**](https://docs.docker.com/desktop/linux/install/)
 
 - Lancez Docker Desktop
 - Depuis une console, entrez : `docker pull casegibson/oc-p13:latest`
@@ -138,12 +138,12 @@ Installez les dépendances:
 
 ### Description <a name="pre-commit-description"></a>
 
-Le pre-commit est une série de tests qui surviennent quand on lance un commit, il permet de vérifier
+Pre-commit aide à exécuter une commande ou un script lorsqu'une action de commit est déclenchée.
 *(selon la configuration choisie)* si ce que vous voulez soumettre est conforme à ce qui est attendu.
 
 ### Prérequis <a name="pre-commit-prereq"></a>
 
-Pour activer le pre-commit, vous aurez besoin d'installer les bibliothèques qui y sont liées.
+Pour activer le pre-commit, vous aurez besoin d'installer la bibliothèque liée.
 
 Entrez: `pip install -r requirements-dev.txt`
 
@@ -151,7 +151,7 @@ Entrez: `pip install -r requirements-dev.txt`
 
 Dans le cas où voudriez vous-même tester le bon fonctionnement du pre-commit:
 
-Entrez: `pre-commit --all-files`
+Entrez: `pre-commit run --all-files`
 
 Dans le cas où vous voudriez modifier sa configuration,\
 modifiez le fichier [.pre-commit-config.yaml](https://github.com/thomas-barbato/projet-13/blob/master/.pre-commit-config.yaml)
@@ -160,66 +160,65 @@ modifiez le fichier [.pre-commit-config.yaml](https://github.com/thomas-barbato/
 
 ### Description <a name="deploiement-description"></a>
 
-Le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
-Lorsque l'ont push vers la branche **master**.
+Lorsque l'on push vers la branche **master**, le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
 Le fichier [**django.yml**](https://github.com/thomas-barbato/projet-13/blob/master/.github/workflows/django.yml) vous permet de modifier la configuration du deploiement.
 
 ### Prérequis <a name="deploiement-prereq"></a>
 
-Pour effectuer le déploiement de l'application, vous aurez besoin de plusieurs comptes :
+Pour effectuer le déploiement de l'application, vous aurez besoin de créer un compte sur les plateformes suivantes :
 
-- [**Github**](https://github.com)
+- [**GitHub**](https://github.com)
 - [**Render**](https://render.com/)
 - [**Docker**](https://hub.docker.com/)
 - [**Sentry**](https://sentry.io/)
 
 **Si les tests sont approuvés** :
-- Une image docker est créée
+- Une image docker est créée et uploadée vers dockerhub
 - déploiement vers Render
 
 ## Configuration du déploiement <a name="deploiement-configuration"></a>
 
-Pour faire fonctionner le pipeline CI/CD, vous devrez créer un **web service** sur le site [**Render**](https://render.com/),
+Pour faire fonctionner le pipeline CI/CD, vous devrez créer un **Web Service** sur le site [**Render**](https://render.com/),
 il vous permettra d'héberger votre site web.
 
 Pour ce faire :
 
-1. assurez-vous d'avoir un compte [**Github**](https://github.com)
+1. Assurez-vous d'avoir un compte [**GitHub**](https://github.com)
 
 2. Connectez-vous à votre compte [**Render**](https://render.com/)
 
-3. Cliquez sur **New** et sélectionnez **web service**
-![render](img/render_1.PNG)
+3. Cliquez sur **New** et sélectionnez **Web Service**
+![Render](img/render_1.PNG)
 
-4. Liez votre compte render à votre compte github
-![render](img/render_2.PNG)
+4. Liez votre compte Render à votre compte GitHub
+![Render](img/render_2.PNG)
 
-5. Vous devriez alors voir apparaitre les derniers push fait sur le git, cliquez sur **connect**
-![render](img/render_3.PNG)
+5. Les repository liés au compte GitHub s'affichent, cliquez sur **connect** pour sélectionner celui qui vous intéresse.
+![Render](img/render_3.PNG)
 
 6. Vous apparaitrez alors sur la page de déploiement, veillez à remplir correctement les informations demandées.\
-Attention, dans la section **Runtime** vous pouvez choisir docker (vous n'aurez rien d'autre à entrer avec ce choix),
+**Attention**, dans la section **Runtime** vous pouvez choisir docker (vous n'aurez rien d'autre à entrer avec ce choix),
 ou Python3, auquel cas vous devrez entrer la commande suivante :\
 `waitress-serve --listen=*:8000 wsgi:application` \
-![render](img/render_4_bis.PNG)
-Pour linux, c'est gunicorn qui est utilisé à la place de waitress, à vous d'adapter selon vos besoins.
+![Render](img/render_4_bis.PNG)
+Pour Linux, c'est gunicorn qui est utilisé à la place de waitress, à vous d'adapter selon vos besoins.
 Pour cet exemple, nous allons faire le choix de docker
-![render](img/render_4.PNG)
+![Render](img/render_4.PNG)
 7. Cliquez sur **confirmer**
 8. Le déploiement commence, patientez
-![render](img/render_5.PNG)
+![Render](img/render_5.PNG)
 9. Une fois terminé, vous allez être redirigé vers **overview**
-![render](img/render_6.PNG)
+![Render](img/render_6.PNG)
 
 ### Renseigner les variables secretes de github
 
-Avant tout, vous devrez créer des variables **secrets** dans votre github.\
+Avant tout, vous devrez créer des variables **Secrets** dans votre github.\
 Pour y accéder
 
-Veuillez vous rendre dans le menu **settings** de github\
+Veuillez vous rendre dans le menu **Settings** de github\
 ![settings](img/github_secret_1.PNG)
 
-Déroulez le menu **secrets and variables** dans la partie **security**, puis cliquez sur **secrets**
+Déroulez le menu **Secrets and Variables** dans la partie **Security**, puis cliquez sur **Secrets**
 
 ![menu secrets and variables](img/github_secret_2.PNG)
 
@@ -227,7 +226,7 @@ Vous pourrez alors y créer et/ou consulter les variables secretes qui sont lié
 
 ![variables secretes](img/github_secret_3.PNG)
 
-Pour créer une nouvelle variable, veuillez cliquer sur **new repository secret**
+Pour créer une nouvelle variable, veuillez cliquer sur **New Repository Secret**
 
 ![variables secretes](img/github_secret_4.PNG)
 1. entrez un nom
@@ -242,8 +241,7 @@ Suivez les indications suivantes :
 
 |  Nom de la variable  |                                                                                                                                                                      Informations                                                                                                                                                                       |
 |:--------------------:|:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------:|
-|   DOCKER_PASSWORD    |                                                                                         Sur le site [**Docker**](https://hub.docker.com/), le mot de passe définit à la création de votre compte **(facultatif, car nous utiliserons DOCKER_TOKEN à la place)**                                                                                         |
-|     DOCKER_TOKEN     | Sur le site [**Docker**](https://hub.docker.com/), dans votre profil cliquez sur **account settings** puis **security** et **new access token**, veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement, donnez les accès **Read, Write, Delete**. La clé commence toujours par la suite de caractères **dckr** |
+|     DOCKER_TOKEN     | Sur le site [**Docker**](https://hub.docker.com/), dans votre profil cliquez sur **Account Settings** puis **Security** et **New Access Token**, veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement, donnez les accès **Read, Write, Delete**. La clé commence toujours par la suite de caractères **dckr** |
 |   DOCKER_USERNAME    |                                                                                                                    Sur le site [**Docker**](https://hub.docker.com/), votre nom d'utilisateur définit à la création de votre compte                                                                                                                     |
-|  MY_RENDER_API_KEY   |     Sur le site [**Render**](https://render.com/) , cliquez sur votre profile, puis sur **account settings** puis sur **API Keys**, ensuite sur **Create API Key**, entrez un nom et veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement  . La clé commence toujours par la suite de caractères **rnd_**     |
-| MY_RENDER_SERVICE_ID |                                           Sur le site [**Render**](https://render.com/), selectionnez le **web service** déjà créé puis, rendez-vous **settings**, vous y trouverez **Deploy Hook** et copiez-coller la ligne qu'elle contient. La clé commence toujours par la suite de caractères **srv-**                                            |
+|  MY_RENDER_API_KEY   |     Sur le site [**Render**](https://render.com/) , cliquez sur votre profile, puis sur **Account Settings** puis sur **API Keys**, ensuite sur **Create API Key**, entrez un nom et veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement  . La clé commence toujours par la suite de caractères **rnd_**     |
+| MY_RENDER_SERVICE_ID |                                           Sur le site [**Render**](https://render.com/), sélectionnez le **Web Service** déjà créé puis, rendez-vous **settings**, vous y trouverez **Deploy Hook** et copiez-coller la ligne qu'elle contient. La clé commence toujours par la suite de caractères **srv-**                                            |
