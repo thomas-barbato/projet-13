@@ -41,7 +41,7 @@
    3. [Configuration](#deploiement-configuration)
 6. [Sentry](#sentry)
    1. [Prérequis](#sentry-prereq)
-   2. [Installation](#sentry-setup)
+   2. [Installation](#sentry-install)
 7. [Commande utile](#commande-utile)
 
 
@@ -319,7 +319,7 @@ En cliquant sur l'erreur qui vient d'apparaitre, vous serez redirigé vers le ra
 
 ![Sentry](img/sentry_5.PNG)
 
-## Commande utile <a name="#commande-utile"></a>
-|                 commandes                  |                                               Effets                                               |
+## Commande utile <a name="commande-utile"></a>
+|                 commande                  |                                               Effet                                                |
 |:------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
 | git commit --allow-empty -m "message_vide" | Permet de faire un commit qui ne contiendra rien, mais déclenchera tout de même le pipeline CI/CD. |
