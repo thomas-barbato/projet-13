@@ -317,7 +317,7 @@ N'oubliez pas de cliquer sur **Enable real-time updates**
 
 En cliquant sur l'erreur qui vient d'apparaitre, vous serez redirigé vers le rapport qui y est lié :
 
-![Sentry](img/sentry_5.PNG)
+![Sentry](img/sentry_5.png)
 
 ## Commande utile <a name="commande-utile"></a>
 |                 commande                  |                                               Effet                                                |
