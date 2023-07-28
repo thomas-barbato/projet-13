@@ -260,13 +260,16 @@ Assurez-vous tout d'abord d'être connecté sur [**sentry.io**](https://sentry.i
 
 Créez un nouveau projet sur votre compte sentry :
 
-Cliquez sur **projets** :\
+Cliquez sur **projets** :
+
 ![Sentry](img/sentry_0.PNG)
 
 Cliquez sur **Create project** :
+
 ![Sentry](img/sentry_1.PNG)
 
 Sélectionnez **Django** :
+
 ![Sentry](img/sentry_2.PNG)
 
 Entrez le nom du projet, puis cliquez sur **Create Project**
