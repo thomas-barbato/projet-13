@@ -42,6 +42,7 @@
 6. [Sentry](#sentry)
    1. [Prérequis](#sentry-prereq)
    2. [Installation](#sentry-setup)
+7. [Commande utile](#commande-utile)
 
 
 ## Objectifs du projet 13 <a name="objectifs"></a>
@@ -311,6 +312,11 @@ En cherchant à aller sur l'url **sentry-debug/**, vous ferez alors apparaitre l
 N'oubliez pas de cliquer sur **Enable real-time updates**
 ![Sentry](img/sentry_4_bis.PNG)
 
-En cliquant sur l'erreur qui vient d'apparaitre, vous serez redirigé vers le rapport qui y est lié:
+En cliquant sur l'erreur qui vient d'apparaitre, vous serez redirigé vers le rapport qui y est lié :
 
 ![Sentry](img/sentry_5.PNG)
+
+## Commande utile <a name="#commande-utile"></a>
+|                 commandes                  |                                               Effets                                               |
+|:------------------------------------------:|:--------------------------------------------------------------------------------------------------:|
+| git commit --allow-empty -m "message_vide" | Permet de faire un commit qui ne contiendra rien, mais déclenchera tout de même le pipeline CI/CD. |
