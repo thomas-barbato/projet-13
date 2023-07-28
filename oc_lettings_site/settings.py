@@ -110,14 +110,7 @@ sentry_sdk.init(
         "https://49de0dbe45f9462598ab90bc7da94df5@o4505601723269120"
         ".ingest.sentry.io/4505601730150400"
     ),
-    integrations=[
-        DjangoIntegration(
-            transaction_style="url",
-            middleware_spans=True,
-            signals_spans=False,
-            cache_spans=False,
-        )
-    ],
+    integrations=[DjangoIntegration()],
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
     # We recommend adjusting this value in production.

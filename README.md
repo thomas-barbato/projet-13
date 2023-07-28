@@ -39,6 +39,9 @@
    1. [Description](#deploiement-description)
    2. [Prérequis](#deploiement-prereq)
    3. [Configuration](#deploiement-configuration)
+6. [Sentry](#sentry)
+   1. [Prérequis](#sentry-prereq)
+   2. [Installation](#sentry-setup)
 
 
 ## Objectifs du projet 13 <a name="objectifs"></a>
@@ -245,3 +248,69 @@ Suivez les indications suivantes :
 |   DOCKER_USERNAME    |                                                                                                                    Sur le site [**Docker**](https://hub.docker.com/), votre nom d'utilisateur définit à la création de votre compte                                                                                                                     |
 |  MY_RENDER_API_KEY   |     Sur le site [**Render**](https://render.com/) , cliquez sur votre profile, puis sur **Account Settings** puis sur **API Keys**, ensuite sur **Create API Key**, entrez un nom et veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement  . La clé commence toujours par la suite de caractères **rnd_**     |
 | MY_RENDER_SERVICE_ID |                                           Sur le site [**Render**](https://render.com/), sélectionnez le **Web Service** déjà créé puis, rendez-vous **settings**, vous y trouverez **Deploy Hook** et copiez-coller la ligne qu'elle contient. La clé commence toujours par la suite de caractères **srv-**                                            |
+
+## Sentry <a name="sentry"></a>
+
+### Prérequis <a name="sentry-prereq"></a>
+
+Assurez-vous tout d'abord d'être connecté sur [**sentry.io**](https://sentry.io) et d'avoir installé la bibliothèque **sentry-sdk présente dans requirements.txt**
+
+### Installation <a name="sentry-install"></a>
+
+Créez un nouveau projet sur votre compte sentry :
+
+Cliquez sur **projets** :\
+![Sentry](img/sentry_0.PNG)
+
+Cliquez sur **Create project** :
+![Sentry](img/sentry_1.PNG)
+
+Sélectionnez **Django** :
+![Sentry](img/sentry_2.PNG)
+
+Entrez le nom du projet, puis cliquez sur **Create Project**
+![Sentry](img/sentry_3.PNG)
+
+Vous arriverez sur la page de configuration, recopiez le code suivant dans votre fichier [**settings.py**](https://github.com/thomas-barbato/projet-13/blob/master/oc_lettings_site/settings.py) :
+```
+import sentry_sdk
+from sentry_sdk.integrations.django import DjangoIntegration
+
+sentry_sdk.init(
+  dsn="https://4b2e52f68c334141a2b9c1ba601f6272@o4505601723269120.ingest.sentry.io/4505609078767616",
+  integrations=[DjangoIntegration()],
+
+  # Set traces_sample_rate to 1.0 to capture 100%
+  # of transactions for performance monitoring.
+  # We recommend adjusting this value in production.
+  traces_sample_rate=1.0,
+
+  # If you wish to associate users to errors (assuming you are using
+  # django.contrib.auth) you may enable sending PII data.
+  send_default_pii=True
+)
+```
+**Attention**, l'adresse DSN est unique à votre projet
+
+Ajoutez une nouvelle route dans l'un de vos fichiers urls.py, nous prendrons par défaut celui du dossier **oc_lettings_site** disponible [**ici**](https://github.com/thomas-barbato/projet-13/blob/master/oc_lettings_site/urls.py)
+
+```
+def trigger_error(request):
+  division_by_zero = 1 / 0
+
+  urlpatterns = [
+    path('sentry-debug/', trigger_error),
+    # ...
+  ]
+```
+
+En cherchant à aller sur l'url **sentry-debug/**, vous ferez alors apparaitre l'erreur dans [**Sentry**](https://sentry.io/) :
+
+![Sentry](img/sentry_4.PNG)
+
+N'oubliez pas de cliquer sur **Enable real-time updates**
+![Sentry](img/sentry_4_bis.PNG)
+
+En cliquant sur l'erreur qui vient d'apparaitre, vous serez redirigé vers le rapport qui y est lié:
+
+![Sentry](img/sentry_5.PNG)
