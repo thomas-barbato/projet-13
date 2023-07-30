@@ -207,6 +207,8 @@ ou Python3, auquel cas vous devrez entrer la commande suivante :\
 ![Render](img/render_4_bis.PNG)
 Pour Linux, c'est gunicorn qui est utilisé à la place de waitress, à vous d'adapter selon vos besoins.
 Pour cet exemple, nous allons faire le choix de docker
+![Render](img/render_4_bis2.PNG)
+Concernant **Auto-Deploy**, sélectionnez **No**, sinon, Render n'attendra pas la fin des vérifications du pipeline pour lancer le déploiement.
 ![Render](img/render_4.PNG)
 7. Cliquez sur **confirmer**
 8. Le déploiement commence, patientez
