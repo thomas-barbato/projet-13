@@ -97,7 +97,9 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
-    needs: tests build-and-push-to-docker
+    needs:
+      - tests
+      - build-and-push-to-docker
     runs-on: windows-latest
     steps:
       - name: Check out the repo
