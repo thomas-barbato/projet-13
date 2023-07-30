@@ -99,7 +99,7 @@ jobs:
     docker:
       - image: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
     steps:
-      - name:
+      - name: Check out the repo
         uses: actions/checkout@v3
       - name: "Deploy"
         run: |
