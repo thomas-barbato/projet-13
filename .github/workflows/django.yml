@@ -96,10 +96,10 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
-    runs-on: windows-latest
+    docker:
+      - image: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
     steps:
-    - name: Deploy to render
-      uses: johnbeynon/render-deploy-action@v0.0.8
-      with:
-        service-id: ${{ secrets.MY_RENDER_SERVICE_ID }}
-        api-key: ${{ secrets.MY_RENDER_API_KEY }}
+      - checkout
+      - run:
+          name: "Deploy"
+          command: curl -X GET ${{ secrets.MY_RENDER_SERVICE_ID }}
