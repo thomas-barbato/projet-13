@@ -96,6 +96,7 @@ jobs:
           tags: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
 
   deploy-to-render:
+    runs-on: windows-latest
     docker:
       - image: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
     steps:
