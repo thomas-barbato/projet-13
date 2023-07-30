@@ -106,4 +106,4 @@ jobs:
         uses: actions/checkout@v3
       - name: Deploy to render
         run: |
-          curl -X GET https://api.render.com/deploy/srv-cj3e46diuie55pkoiad0?key=c7IVaEUvucQ
+          curl -X GET ${{ secrets.MY_RENDER_SERVICE_ID }}
