@@ -99,7 +99,8 @@ jobs:
     docker:
       - image: ${{ secrets.DOCKER_USERNAME}}/${{ env.REPOS_NAME }}:${{ env.IMG_TAG}}
     steps:
-      - checkout
-      - run:
-          name: "Deploy"
-          command: curl -X GET ${{ secrets.MY_RENDER_SERVICE_ID }}
+      - name:
+        uses: actions/checkout@v3
+      - name: "Deploy"
+        run: |
+          curl -X GET ${{ secrets.MY_RENDER_SERVICE_ID }}
