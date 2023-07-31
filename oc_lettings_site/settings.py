@@ -107,8 +107,8 @@ AUTH_PASSWORD_VALIDATORS = [
 # Sentry configuration
 sentry_sdk.init(
     dsn=(
-        "https://9df39fce87e6f3056746bac7e5d3266e@o4505601723269120"
-        ".ingest.sentry.io/4505614464778240"
+        "https://8818e1035f7441f4bb83c122d9388456@o4505601723269120.ingest.sentry.io"
+        "/4505624010227712"
     ),
     integrations=[DjangoIntegration()],
     # Set traces_sample_rate to 1.0 to capture 100%

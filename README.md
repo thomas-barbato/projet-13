@@ -165,7 +165,7 @@ modifiez le fichier [.pre-commit-config.yaml](https://github.com/thomas-barbato/
 ### Description <a name="deploiement-description"></a>
 
 Lorsque l'on push vers la branche **master**, le déploiement de l'application est automatisé grace au pipeline CI/CD "github actions - django".
-Le fichier [**django.yml**](https://github.com/thomas-barbato/projet-13/blob/master/.github/workflows/django.yml) vous permet de modifier la configuration du deploiement.
+Le fichier [**django.yml**](https://github.com/thomas-barbato/projet-13/blob/master/.github/workflows/django.yml) vous permet de modifier la configuration du déploiement.
 
 ### Prérequis <a name="deploiement-prereq"></a>
 
@@ -250,7 +250,7 @@ Suivez les indications suivantes :
 |     DOCKER_TOKEN     | Sur le site [**Docker**](https://hub.docker.com/), dans votre profil cliquez sur **Account Settings** puis **Security** et **New Access Token**, veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement, donnez les accès **Read, Write, Delete**. La clé commence toujours par la suite de caractères **dckr** |
 |   DOCKER_USERNAME    |                                                                                                                    Sur le site [**Docker**](https://hub.docker.com/), votre nom d'utilisateur définit à la création de votre compte                                                                                                                     |
 |  MY_RENDER_API_KEY   |     Sur le site [**Render**](https://render.com/) , cliquez sur votre profile, puis sur **Account Settings** puis sur **API Keys**, ensuite sur **Create API Key**, entrez un nom et veillez à bien noter la valeur qui sera générée car vous ne pourrez pas la récupérer autrement  . La clé commence toujours par la suite de caractères **rnd_**     |
-| MY_RENDER_SERVICE_ID |                                           Sur le site [**Render**](https://render.com/), sélectionnez le **Web Service** déjà créé puis, rendez-vous **settings**, vous y trouverez **Deploy Hook** et copiez-coller la ligne qu'elle contient. La clé commence toujours par la suite de caractères **srv-**                                            |
+| MY_RENDER_SERVICE_ID |                            Sur le site [**Render**](https://render.com/), sélectionnez le **Web Service** déjà créé puis, rendez-vous **settings**, vous y trouverez **Deploy Hook** et copiez-coller la ligne qu'elle contient. La clé commence toujours par la suite de caractères **https://api.render.com/deploy/srv-**                             |
 
 ## Sentry <a name="sentry"></a>
 
