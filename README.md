@@ -27,7 +27,9 @@
    2. [Linting](#devlocal-linting)
    3. [Tests unitaires](#devlocal-pytest)
    4. [Base de données](#devlocal-bdd)
-   5. [Administration](#devlocal-admin)
+   5. [Générer un fichier d'environnement](#devlocal-env)
+   6. [Démarrer le site web, en local](#devlocal-start)
+   7. [Administration](#devlocal-admin)
 3. [Docker](#docker)
    1. [Docker local](#docker-local)
    2. [Docker pull](#docker-pull)
@@ -99,13 +101,30 @@ Installez les dépendances:
 #### Base de données <a name="devlocal-bdd"></a>
 
 - `cd /projet-13/oc_lettings_site/`
-- Ouvrir une session shell:`sqlite3`
-- Se connecter à la base de données: `.open oc-lettings-site.sqlite3`
-- Afficher les tables dans la base de données: `.tables`
-- Afficher les colonnes dans le tableau des profils: `pragma table_info(oc_lettings_site_profile);`
-- Lancer une requête sur la table des profils: `select user_id, favorite_city from
+- Ouvrir une session shell :`sqlite3`
+- Se connecter à la base de données : `.open oc-lettings-site.sqlite3`
+- Afficher les tables dans la base de données : `.tables`
+- Afficher les colonnes dans le tableau des profils : `pragma table_info(oc_lettings_site_profile);`
+- Lancer une requête sur la table des profils : `select user_id, favorite_city from
   oc_lettings_site_profile where favorite_city like 'B%';`;
 - `.quit` pour quitter
+
+#### Générer un fichier d'environnement <a name="devlocal-env"></a>
+
+Vous allez devoir ensuite générer un fichier .env, à completer.
+Pour ce faire, entrez la commande suivante depuis le dossier root ( "." ) du projet:
+`python .\setup_env.py`
+
+Cela créera un fichier .env, exemple:
+
+`DJANGO_SECRET_KEY=#j*#_9ku=udx^#d4op66^b@%1$0tkjqz=alcp-b@k-78=+-%6$`
+
+`SENTRY_DSN=https://8818e1035f7441f4bb83c122d9388456@o4505601723269120.ingest.sentry.io/4505624010227712`
+
+*Attention à ne pas mettre d'espace entre le nom de la variable, le symbole = et la valeur.*
+
+#### Démarrer le site web, en local <a name="devlocal-start"></a>
+`python manage.py runserver`
 
 #### Panel d'administration <a name="devlocal-admin"></a>
 
