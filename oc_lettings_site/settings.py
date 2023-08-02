@@ -2,19 +2,18 @@ import os
 import environ
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
+from django.core.management.utils import get_random_secret_key
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OCL_DIR = BASE_DIR + "/oc_lettings_site"
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/3.0/howto/deployment/checklist/
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get(
-    "SECRET_KEY", default="fp$9^593hsriajg$_%=5trot9g!1qa@ew(o-1#@=&4%=hp46(s"
-)
+SECRET_KEY = env("DJANGO_SECRET_KEY", default=get_random_secret_key())
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -104,8 +103,6 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-env = environ.Env()
-environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 # Sentry configuration
 sentry_sdk.init(
     dsn=env("SENTRY_DSN"),
