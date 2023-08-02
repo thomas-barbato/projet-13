@@ -31,19 +31,19 @@ jobs:
         echo 'Hi, project in DEV mod'
         python -m venv venv
         . venv/scripts/activate
-        python .\setup_env.py
         echo 'requirements setup...'
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
+        python .\setup_env.py
 
     - name: install dep (prod mod)
       if: ${{ env.DEBUG == 0 }}
       run: |
         echo 'Hi, project in PROD mod'
-        python .\setup_env.py
         python -m pip install --upgrade pip
         echo 'requirements setup...'
         pip install -r requirements.txt
+        python .\setup_env.py
 
     - name: Black test
       run: |
