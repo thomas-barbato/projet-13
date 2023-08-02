@@ -64,7 +64,7 @@ jobs:
         python manage.py test
 
   build-and-push-to-docker:
-    needs: tests
+    needs: tests-and-build
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
@@ -98,7 +98,7 @@ jobs:
 
   deploy-to-render:
     needs:
-      - tests
+      - tests-and-build
       - build-and-push-to-docker
     runs-on: windows-latest
     steps:
