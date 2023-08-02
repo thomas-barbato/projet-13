@@ -34,6 +34,7 @@ jobs:
         echo 'requirements setup...'
         pip install -r requirements.txt
         pip install -r requirements-dev.txt
+        python setup_env.py
 
     - name: install dep (prod mod)
       if: ${{ env.DEBUG == 0 }}
@@ -42,6 +43,7 @@ jobs:
         python -m pip install --upgrade pip
         echo 'requirements setup...'
         pip install -r requirements.txt
+        python setup_env.py
 
     - name: Black test
       run: |
