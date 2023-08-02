@@ -1,4 +1,5 @@
 import os
+import environ
 import sentry_sdk
 from sentry_sdk.integrations.django import DjangoIntegration
 
@@ -103,13 +104,11 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
-
+env = environ.Env()
+environ.Env.read_env(os.path.join(BASE_DIR, ".env"))
 # Sentry configuration
 sentry_sdk.init(
-    dsn=(
-        "https://8818e1035f7441f4bb83c122d9388456@o4505601723269120.ingest.sentry.io"
-        "/4505624010227712"
-    ),
+    dsn=env("SENTRY_DSN"),
     integrations=[DjangoIntegration()],
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
