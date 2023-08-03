@@ -168,7 +168,9 @@ Pre-commit aide à exécuter une commande ou un script lorsqu'une action de comm
 
 Pour activer le pre-commit, vous aurez besoin d'installer la bibliothèque liée.
 
-Entrez: `pip install -r requirements-dev.txt`
+Entrez: \
+`pip install -r requirements-dev.txt` \
+`pre-commit install`
 
 ### Utilisation manuelle et configuration <a name="pre-commit-manuelle"></a>
 
